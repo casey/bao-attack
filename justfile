@@ -1,10 +1,12 @@
 default:
 	just -l
 
+demo: clean setup attack check run
+
 clean:
 	rm -f good.sh.bao
 
-setup: clean
+setup:
 	bao encode good.sh good.sh.bao
 
 attack:
@@ -23,7 +25,7 @@ check:
 		exit 0
 	fi
 
-run: check
+run:
 	#!/usr/bin/env python3
 
 	import struct, tempfile, subprocess
